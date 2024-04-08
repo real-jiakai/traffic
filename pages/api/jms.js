@@ -1,5 +1,7 @@
-export default async function handler(req,res) {
-    const reponse = await fetch('https://justmysocks5.net/members/getbwcounter.php?service=736256&id=427add3b-c088-4c29-8a19-c70b3ee389cb')
-    const data = await reponse.json()
-    res.status(200).json(data)
-};
+export default async function handler(req, res) {
+    const id = process.env.ID;
+    const service = process.env.SERVICE;
+    const response = await fetch(`https://justmysocks5.net/members/getbwcounter.php?service=${service}&id=${id}`);
+    const data = await response.json();
+    res.status(200).json(data);
+}
